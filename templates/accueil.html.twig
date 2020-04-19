@@ -1,0 +1,122 @@
+{% extends "base.html.twig" %}
+{% block body%}
+    <!-- Integrer le slide dans la page d'accueil -->
+    {% include "templates/slide_menu.html.twig" %}
+
+    <!-- About Section -->
+    <section class="about-section-two">
+        <div class="anim-icons full-width">
+            <span class="icon icon-circle-1 wow zoomIn"></span>
+        </div>
+        <div class="auto-container">
+            <div class="row">
+                <!-- Content Column -->
+                <div class="content-column col-lg-6 col-md-12 col-sm-12 order-2">
+                    <div class="inner-column">
+                        <div class="sec-title">
+                            <span class="title">ABOUT MEETUP</span>
+                            <h2>Welcome to the World <br>Digital Meetup 2020</h2>
+                            <div class="text">Dolor sit amet consectetur elit sed do eiusmod tempor incd idunt labore et dolore magna aliqua enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat.</div>
+                        </div>
+                        <div class="row">
+                            <div class="about-block col-lg-6 col-md-6 col-sm-12">
+                                <div class="inner-box">
+                                    <h4><span class="icon fa fa-map-marker-alt"></span> Where</h4>
+                                    <div class="text">Pearl Hotel, New York, USA</div>
+                                </div>
+                            </div>
+                            <div class="about-block col-lg-6 col-md-6 col-sm-12">
+                                <div class="inner-box">
+                                    <h4><span class="icon fa fa-clock"></span> when</h4>
+                                    <div class="text">January 20, 2020 09:00 AM</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-box"><a href="contact.html" class="theme-btn btn-style-three"><span class="btn-title">Register Now</span></a></div>
+                    </div>
+                </div>
+
+                <!-- Image Column -->
+                <div class="image-column col-lg-6 col-md-12 col-sm-12">
+                    <div class="image-box">
+                        <figure class="image wow fadeIn"><img src="images/resource/about-img-2.jpg" alt=""></figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End About Section -->
+
+    <!-- Schedule Section Style two -->
+    <section class="schedule-section style-three">
+        <div class="auto-container">
+            <div class="sec-title text-center">
+                <h2>Organisation</h2>
+            </div>
+
+            <div class="schedule-tabs style-three tabs-box">
+                <div class="btns-box">
+                    <!--Tabs Box-->
+                    <ul class="tab-buttons clearfix">
+                        {% for i in 1..4 %}
+                        <li class="tab-btn {% if loop.first %}active-btn {% endif %}" data-tab="#tab-{{i}}">
+                            <span class="day">Day 0{{i}}</span>
+                            <span class="date">0{{i}}</span> 
+                            <span class="month">Jan</span> 2020
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="tabs-content">
+                    <!--Tab-->
+                    {% for i in 1..4 %}
+                    <div class="tab {% if loop.first %} active-tab {% endif %}" id="tab-{{i}}">
+                        <div class="schedule-timeline row">
+                            <!-- schedule Block -->
+                            <div class="schedule-block col-lg-6 col-md-12 col-sm-12">
+                                <div class="inner-box">
+                                    <div class="inner">
+                                        <div class="date">9.00 AM - 10.00 AM</div>
+                                        <div class="speaker-info">
+                                            <figure class="thumb"><img src="images/resource/thumb-1.jpg" alt=""></figure>
+                                            <h5 class="name">Ashli Scroggy</h5>
+                                            <span class="designation">Founder & CEO</span>
+                                        </div>
+                                        <h4><a href="event-detail.html">Modern Marketing Summit Sydney 2018</a></h4>
+                                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmtempor incididunt labore et</div>
+                                        <div class="btn-box">
+                                            <a href="event-detail.html" class="theme-btn">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <!-- schedule Block -->
+                            <div class="schedule-block col-lg-6 col-md-12 col-sm-12">
+                                <div class="inner-box">
+                                    <div class="inner">
+                                        <div class="date">12.00 AM - 01.00 PM</div>
+                                        <div class="speaker-info">
+                                            <figure class="thumb"><img src="images/resource/thumb-2.jpg" alt=""></figure>
+                                            <h5 class="name">Ashli Scroggy</h5>
+                                            <span class="designation">Founder & CEO</span>
+                                        </div>
+                                        <h4><a href="event-detail.html">Modern Marketing Summit Sydney 2018</a></h4>
+                                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmtempor incididunt labore et</div>
+                                        <div class="btn-box">
+                                            <a href="event-detail.html" class="theme-btn">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End schedule Section -->
+
+
+
+{% endblock %}

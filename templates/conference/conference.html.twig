@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block title %} Conference {% endblock %}
+{% block body %}
+   <!--Page Title-->
+    <section class="page-title" style="background-image:url(images/background/5.jpg);">
+        <div class="auto-container">
+            <h1>Blog Grid</h1>
+            <ul class="bread-crumb clearfix">
+                <li><a href="index-2.html">Nos conferences</a></li>
+            </ul>
+        </div>
+    </section>
+    <!--End Page Title-->   
+
+        <!-- News Section -->
+    <section class="news-section alternate">
+        <div class="auto-container">
+            <div class="row">
+                {% for i in 1..9 %}
+                <!-- News Block Three -->
+                <div class="news-block col-lg-4 col-md-6 col-sm-12 wow fadeInRight">
+                    <div class="inner-box">
+                        <div class="image-box">
+                            <figure class="image"><a href="blog-single.html"><img src="images/resource/news-1.jpg" alt=""></a></figure>
+                        </div>
+                        <div class="lower-content">
+                            <ul class="post-info">
+                                <li><span class="far fa-user"></span> Admin</li>
+                                <li><span class="far fa-comments"></span> Comment 03</li>
+                            </ul>    
+                            <h4><a href="blog-single.html">International Conference on Art Business</a></h4>
+                            <div class="btn-box"><a href="{{path("detail_conference")}}" class="read-more">Read More</a></div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            <!--Styled Pagination-->
+            <ul class="styled-pagination text-center">
+                <li><a href="#">1</a></li>
+                <li><a href="#" class="active">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#"><span class="icon fa fa-angle-right"></span></a></li>
+            </ul>                
+            <!--End Styled Pagination-->
+        </div>
+    </section>
+    <!--End News Section -->
+
+
+{% endblock %}
