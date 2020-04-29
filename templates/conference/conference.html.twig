@@ -16,7 +16,7 @@
     <section class="news-section alternate">
         <div class="auto-container">
             <div class="row">
-                {% for i in 1..9 %}
+                {% for conference in conferences %}
                 <!-- News Block Three -->
                 <div class="news-block col-lg-4 col-md-6 col-sm-12 wow fadeInRight">
                     <div class="inner-box">
@@ -26,14 +26,17 @@
                         <div class="lower-content">
                             <ul class="post-info">
                                 <li><span class="far fa-user"></span> Admin</li>
-                                <li><span class="far fa-comments"></span> Comment 03</li>
+                                <li><span class="far fa-comments"></span>{{ conference.commentaire | length }} ~ Commentaire(s)</li>
                             </ul>    
-                            <h4><a href="blog-single.html">International Conference on Art Business</a></h4>
-                            <div class="btn-box"><a href="{{path("detail_conference")}}" class="read-more">Read More</a></div>
+                            <h4><a href="blog-single.html">{{conference.titre}}</a></h4>
+                            <div class="btn-box"><a href="{{path("detail_conference",{slug: conference.slug})}}" class="read-more">Plus d'infos</a></div>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
+            </div>
+        
+                
             <!--Styled Pagination-->
             <ul class="styled-pagination text-center">
                 <li><a href="#">1</a></li>
@@ -42,7 +45,6 @@
                 <li><a href="#"><span class="icon fa fa-angle-right"></span></a></li>
             </ul>                
             <!--End Styled Pagination-->
-        </div>
     </section>
     <!--End News Section -->
 

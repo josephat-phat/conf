@@ -2,16 +2,29 @@
 
 namespace App\Controller;
 
+use App\Entity\Commentaire;
+use App\Entity\Conference;
+use App\Form\CommentaireFormType;
+use App\Repository\CommentaireRepository;
+use App\Repository\ConferenceRepository;
+use App\SpamChecker;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Twig\Environment;
 
 class ControllerConferenceController extends AbstractController
 {
     /**
      * @Route("/conference", name="conference")
      */
-    public function conference(){
-        return $this->render('conference/conference.html.twig');
+    public function conference(ConferenceRepository $repo){
+        return $this->render('conference/conference.html.twig',[
+            'conferences'=>$repo->findAll(),
+        ]);
     }
 
 
@@ -20,9 +33,11 @@ class ControllerConferenceController extends AbstractController
     /**
      * 
      * 
-     * @Route("/conference/detail_conference", name="detail_conference")
+     * @Route("/conference/{slug}", name="detail_conference")
      */
-    public function detail(){
-        return $this->render("conference/detail_conference.html.twig");
+    public function detail(conference $conference){
+        return $this->render('conference/detail_conference.html.twig',[
+            'conference'=> $conference,
+        ]);
     }
 }
