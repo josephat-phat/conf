@@ -1,0 +1,80 @@
+{% extends "base.html.twig" %}
+{% block title %} Boutique {% endblock %}
+{% block body %}
+     <!--Page Title-->
+    <section class="page-title" style="background-image:url(images/background/5.jpg);">
+        <div class="auto-container">
+            <h1>Blog Grid</h1>
+            <ul class="bread-crumb clearfix">
+                <li><a href="index-2.html">Boutique</a></li>
+            </ul>
+        </div>
+    </section>
+    <!--End Page Title--> 
+
+       <!-- Pricing Section -->
+    <section class="pricing-section-two alternate">
+        <div class="auto-container">
+            <div class="sec-title text-center">
+                <h2>Nos livres </h2>
+            </div>
+
+            <div class="outer-box">
+                <div class="row">
+                    <!-- Pricing Block -->
+                    {% for livre in livres %}
+                    {% if livre.quantite != 0 %}
+                    <div class="pricing-block-two col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
+                        <div class="inner-box">
+                            <small>Titre: </small>
+                            <div class="title"><span class="icon flaticon-movie-tickets"></span>{{livre.titre}}</div>
+                            <div class="price-box">
+                                <h4 class="price">{{livre.prixht}}</h4>
+                            </div>
+                            <ul class="">
+                                <li><strong> Auteur : </strong></li><hr/>
+                                <li class="true">{{livre.auteurs}}</li>
+                            </ul><br/>
+                            <div class="btn-box">
+                                <a href="buy-ticket.html" class="theme-btn btn-style-one"  data-toggle="modal" data-target="#exampleModalCenter"><span class="btn-title">Acheter</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+
+ <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Votre email pour Continuer</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            {{ form_start(form) }}
+                            {{ form_widget(form)}}
+                            <!--input type="text" class="form-control" id="recipient-name" placeholder="exemple@gmail.com" -->
+                        </div>
+                            <div class="btn-box">
+                                <center>
+                                <button type="submit" class="theme-btn btn-style-one"  data-toggle="modal" data-target="#exampleModalCenter">
+                                    <span class="btn-title">Continuer</span>
+                                </button>
+                                </center><br/>
+                            </div>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                    </div>
+                    <!--fin modal -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End Pricing Section -->
+
+{% endblock %}

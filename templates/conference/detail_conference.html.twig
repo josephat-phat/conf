@@ -4,9 +4,9 @@
    <!--Page Title-->
     <section class="page-title" style="background-image:url(/images/background/5.jpg);">
         <div class="auto-container">
-            <h1>Blog Grid</h1>
+            <h1>{{ conference.titre }}</h1>
             <ul class="bread-crumb clearfix">
-                <li><a href="index-2.html">Nos conferences</a></li>
+                <li><a href="index-2.html">{{ conference.slug }}</a></li>
             </ul>
         </div>
     </section>
@@ -33,7 +33,7 @@
                                         <li><span class="far fa-comments"></span>{{ conference.commentaire | length }} ~ Commentaire(s)</li>
                                     </ul>    
                                     <h2>{{ conference.titre }} - {{ conference.ville }}</h2>
-                                        <h3>{{ conference.adresse }}</h3>
+                                    <h3>{{ conference.adresse }}</h3>
                                     <blockquote>
                                         <span class="icon fa fa-quote-left"></span>
                                         <p> {{ conference.description }}</p>
