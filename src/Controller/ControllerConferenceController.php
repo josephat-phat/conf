@@ -22,8 +22,10 @@ class ControllerConferenceController extends AbstractController
      * @Route("/conference", name="conference")
      */
     public function conference(ConferenceRepository $repo){
+        $erreur ="";
         return $this->render('conference/conference.html.twig',[
             'conferences'=>$repo->findAll(),
+            'err' => $erreur
         ]);
     }
 
@@ -36,8 +38,10 @@ class ControllerConferenceController extends AbstractController
      * @Route("/conference/{slug}", name="detail_conference")
      */
     public function detail(conference $conference){
+        $erreur ="";
         return $this->render('conference/detail_conference.html.twig',[
             'conference'=> $conference,
+            'err' => $erreur
         ]);
     }
 }

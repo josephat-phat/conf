@@ -1,14 +1,30 @@
 security:
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
+            
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         users_in_memory: { memory: null }
-    firewalls:
+        users_in_database: 
+            entity: 
+                class: App\Entity\User
+                property: email
+    firewalls: 
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: lazy
-            provider: users_in_memory
+            anonymous: true
+
+            provider: users_in_database
+            form_login:
+                login_path: compte_menu
+                check_path: compte_menu
+
+            logout:
+                path: compte_logout
+                target: compte_menu
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -19,5 +35,6 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+        - { path: ^/menu, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }

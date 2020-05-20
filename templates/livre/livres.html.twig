@@ -35,9 +35,15 @@
                                 <li><strong> Auteur : </strong></li><hr/>
                                 <li class="true">{{livre.auteurs}}</li>
                             </ul><br/>
+                            {% if app.user %}
                             <div class="btn-box">
+                                <a href="#" class="theme-btn btn-style-one" ><span class="btn-title">Acheter</span></a>
+                            </div>
+                            {% else %}
+                                <div class="btn-box">
                                 <a href="buy-ticket.html" class="theme-btn btn-style-one"  data-toggle="modal" data-target="#exampleModalCenter"><span class="btn-title">Acheter</span></a>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
                     {% endif %}

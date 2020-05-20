@@ -19,31 +19,35 @@ class LivresController extends AbstractController
     {
         $form = $this->createForm(CreerCompteMailType::class);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if($form->isSubmitted()){
             $mail = $form->getData();
             $message = (new \Swift_Message('Creation compte'))
-                ->setFrom($mail["email"])
-                ->setTo('josephlouss@gmail.com')
+                ->setFrom($mail['email'])
+                ->setTo('jloussamboulou@gmail.com')
                 ->setBody(
                     $this->renderView(
                         'livre/livres.html.twig',[
                             'form' =>$form->createView(),
                             'livres' => $livre->findAll(),
-                        ],compact('$mail')
+                            compact('mail'),
+                        ]
+                        
                     ),
                     'text/html'
                 )
                 ;
+                dd($mail);
                 $mailer->send($message);
-                return $this->redirectToRoute('livre/livres.html.twig', [
+                return $this->redirectToRoute('livres', [
                     'form' =>$form->createView(),
                     'livres' => $livre->findAll(),
                 ]);
         }
-
+        $erreur ="";
         return $this->render('livre/livres.html.twig', [
             'form' =>$form->createView(),
             'livres' => $livre->findAll(),
+            'err' => $erreur
         ]);
     }
 }

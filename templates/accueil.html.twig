@@ -2,7 +2,9 @@
 {% block body%}
     <!-- Integrer le slide dans la page d'accueil -->
     {% include "templates/slide_menu.html.twig" %}
-
+    {% if app.user %}
+    {{  app.user.email }}
+    {% endif %}
     <!-- About Section -->
     <section class="about-section-two">
         <div class="anim-icons full-width">

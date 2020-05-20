@@ -27,7 +27,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $roles = [];
+    private $roles; // = [];
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -59,6 +59,11 @@ class User implements UserInterface
      */
     private $commentaires;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $mdp;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
@@ -86,24 +91,24 @@ class User implements UserInterface
      *
      * @see UserInterface
      */
-    public function getUsername(): string
+    public function getUsername()
     {
-        return (string) $this->email;
+        return $this->email;
     }
 
     /**
      * @see UserInterface
      */
-    public function getRoles(): array
+    public function getRoles() //: array
     {
-        $roles = $this->roles;
+       // $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        //$roles[] = 'ROLE_USER';
 
-        return array_unique($roles);
+        return ['ROLE_USER'] ;//array_unique($roles);
     }
 
-    public function setRoles(array $roles): self
+    public function setRoles(String $roles): self
     {
         $this->roles = $roles;
 
@@ -115,7 +120,7 @@ class User implements UserInterface
      */
     public function getPassword()
     {
-        // not needed for apps that do not check user passwords
+        return $this->mdp;
     }
 
     /**
@@ -222,6 +227,18 @@ class User implements UserInterface
                 $commentaire->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getMdp(): ?string
+    {
+        return $this->mdp;
+    }
+
+    public function setMdp(string $mdp): self
+    {
+        $this->mdp = $mdp;
 
         return $this;
     }
